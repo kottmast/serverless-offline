@@ -989,7 +989,10 @@ export default class HttpServer {
       }
 
       if (hapiMethod !== 'GET' && hapiMethod !== 'HEAD') {
-        hapiOptions.payload = { parse: false }
+        hapiOptions.payload = {
+          parse: false,
+          maxBytes: 1024 * 1024 * 10
+        }
       }
 
       serverlessLog(`${method} ${hapiPath} -> ${proxyUriInUse}`)
